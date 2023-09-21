@@ -13,6 +13,22 @@ namespace FilmProjekt
             {
                 Debug.WriteLine(item.Cim);
             }
+            Feladat01();
+        }
+
+        private static void Feladat01()
+        {
+            Console.WriteLine($"1. Filmek átlagos hossza: {GetAtlagosHossz()} perc");
+        }
+
+        private static object GetAtlagosHossz()
+        {
+            int osszHossz = 0;
+            foreach (var film in filmek) 
+            {
+                osszHossz += film.Hossz;
+            }
+            return osszHossz / filmek.Count;
         }
 
         private static void FajlBeolvasasa(string fajlNev)
