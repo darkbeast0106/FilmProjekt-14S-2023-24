@@ -16,6 +16,33 @@ namespace FilmProjekt
             Feladat01();
             Feladat02();
             Feladat03();
+            Feladat04();
+        }
+
+        private static void Feladat04()
+        {
+            Console.WriteLine("Adja meg a keresendő részletet:");
+            string keresendo = Console.ReadLine();
+            List<string> cimek = FilmReszKeres(keresendo);
+            Console.WriteLine("A keresett részlet az alábbi filmek címében szerepel: ");
+            foreach (string item in cimek)
+            {
+                Console.WriteLine("\t" + item);
+            }
+        }
+
+        private static List<string> FilmReszKeres(string? keresendo)
+        {
+            List<string> cimek = new List<string>();
+            foreach (var film in filmek)
+            {
+                if (film.Cim.ToLower().Contains(keresendo.ToLower()))
+                {
+                    cimek.Add(film.Cim);
+                }
+            }
+
+            return cimek;
         }
 
         private static void Feladat03()
@@ -26,7 +53,8 @@ namespace FilmProjekt
             if (film == null)
             {
                 Console.WriteLine("A megadott film nem található");
-            } else
+            }
+            else
             {
                 Console.WriteLine($"A megadott film {film.Hossz} perces");
             }
@@ -42,7 +70,7 @@ namespace FilmProjekt
             if (i < filmek.Count)
             {
                 return filmek[i];
-            } 
+            }
             else
             {
                 return null;
@@ -77,7 +105,7 @@ namespace FilmProjekt
         private static object GetAtlagosHossz()
         {
             int osszHossz = 0;
-            foreach (var film in filmek) 
+            foreach (var film in filmek)
             {
                 osszHossz += film.Hossz;
             }
