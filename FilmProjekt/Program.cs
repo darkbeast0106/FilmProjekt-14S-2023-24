@@ -14,6 +14,27 @@ namespace FilmProjekt
                 Debug.WriteLine(item.Cim);
             }
             Feladat01();
+            Feladat02();
+        }
+
+        private static void Feladat02()
+        {
+            Film leghosszabbFilm = GetLeghosszabbFilm();
+
+            Console.WriteLine($"2. A leghosszabb film: {leghosszabbFilm.Cim} - {leghosszabbFilm.Hossz} perc");
+        }
+
+        private static Film GetLeghosszabbFilm()
+        {
+            Film leghosszabbFilm = filmek[0];
+            for (int i = 1; i < filmek.Count; i++)
+            {
+                if (filmek[i].Hossz > leghosszabbFilm.Hossz)
+                {
+                    leghosszabbFilm = filmek[i];
+                }
+            }
+            return leghosszabbFilm;
         }
 
         private static void Feladat01()
