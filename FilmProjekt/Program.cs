@@ -15,6 +15,38 @@ namespace FilmProjekt
             }
             Feladat01();
             Feladat02();
+            Feladat03();
+        }
+
+        private static void Feladat03()
+        {
+            Console.WriteLine("Adjon meg egy film címet:");
+            string cim = Console.ReadLine();
+            Film film = FilmKeres(cim);
+            if (film == null)
+            {
+                Console.WriteLine("A megadott film nem található");
+            } else
+            {
+                Console.WriteLine($"A megadott film {film.Hossz} perces");
+            }
+        }
+
+        private static Film FilmKeres(string cim)
+        {
+            int i = 0;
+            while (i < filmek.Count && filmek[i].Cim != cim)
+            {
+                i++;
+            }
+            if (i < filmek.Count)
+            {
+                return filmek[i];
+            } 
+            else
+            {
+                return null;
+            }
         }
 
         private static void Feladat02()
